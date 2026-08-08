@@ -1670,3 +1670,82 @@ input {
   width: calc(100% - 48px);
   max-width: none;
 }
+
+/* Compact integration diagram: keep the complete flow visible on phones. */
+@media (max-width: 640px) {
+  .integration-scroll-shell {
+    overflow-x: hidden;
+    overscroll-behavior-inline: auto;
+  }
+
+  .integration-scroll-shell::before,
+  .integration-scroll-shell::after {
+    display: none;
+  }
+
+  .integration-diagram {
+    width: 100%;
+    min-width: 0;
+    height: 360px;
+  }
+
+  .integration-diagram__sources {
+    top: 20px;
+    bottom: 20px;
+    left: 12px;
+    width: 108px;
+  }
+
+  .integration-diagram__outputs {
+    top: 65px;
+    bottom: 65px;
+    right: 12px;
+    width: 96px;
+  }
+
+  .integration-diagram button {
+    min-height: 48px;
+    padding: 7px 8px;
+    border-width: 1px;
+    font-size: 12px;
+    line-height: 1.15;
+  }
+
+  .integration-diagram__hub {
+    width: 70px;
+    height: 70px;
+    border-radius: var(--radius);
+  }
+
+  .integration-diagram__hub .brand__mark {
+    padding: 13px;
+  }
+
+  .integration-diagram__hub .brand__mark i {
+    width: 8px;
+    height: 38px;
+  }
+
+  .integration-diagram__hub .brand__mark i:nth-child(2) {
+    height: 15px;
+  }
+
+  .integration-diagram__ripples {
+    width: 180px;
+    height: 180px;
+  }
+
+  .integration-diagram__ripples i:nth-child(1) { width: 74px; height: 74px; }
+  .integration-diagram__ripples i:nth-child(2) { width: 108px; height: 108px; }
+  .integration-diagram__ripples i:nth-child(3) { width: 142px; height: 142px; }
+  .integration-diagram__ripples i:nth-child(4) { width: 176px; height: 176px; }
+
+  .integration-path--base,
+  .integration-path--flow {
+    stroke-width: 7;
+  }
+
+  .integration-path.is-active {
+    stroke-width: 9;
+  }
+}

@@ -39,6 +39,7 @@ export function Integration() {
             <svg
               className="integration-diagram__lines"
               viewBox="0 0 1280 578"
+              preserveAspectRatio="none"
               role="img"
               aria-label="Flujo de integración de sistemas hacia indicadores"
             >
