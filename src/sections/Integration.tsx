@@ -1,4 +1,4 @@
-﻿import { type CSSProperties, useState } from 'react'
+import { type CSSProperties, useState } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
 
 const paths = [
@@ -66,6 +66,7 @@ export function Integration() {
                   className={lineClass(index, 'flow')}
                   d={path}
                   key={'flow-' + path}
+                  pathLength="1"
                   style={
                     { '--flow-delay': index * -420 + 'ms' } as CSSProperties
                   }

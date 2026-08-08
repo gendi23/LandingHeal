@@ -1,4 +1,4 @@
-﻿html {
+html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
 }
@@ -391,8 +391,8 @@ input {
 
 .hero__mockup--perspective {
   --hero-shine: 0;
-  transform: rotateX(var(--hero-tilt));
-  transform-origin: 50% 0;
+  transform: translateY(var(--hero-lift, 0px)) rotateX(var(--hero-tilt)) scale(var(--hero-scale, 1));
+  transform-origin: 50% 100%;
   backface-visibility: hidden;
   will-change: transform;
   box-shadow:
@@ -579,7 +579,7 @@ input {
 
 .benefit:hover > img,
 .benefit:focus-within > img {
-  transform: scale(1.08) rotate(-4deg);
+  transform: scale(1.08);
   filter: brightness(0) invert(1);
 }
 
@@ -1129,7 +1129,7 @@ input {
     stroke-dashoffset: 0;
   }
   to {
-    stroke-dashoffset: -1070;
+    stroke-dashoffset: -1;
   }
 }
 
@@ -1434,15 +1434,15 @@ input {
 .header--scrolled { background: rgb(252 252 252 / 88%); box-shadow: 0 4px 18px rgb(36 37 40 / 8%); backdrop-filter: blur(14px); }
 .header__nav a::after { transition-duration: 150ms; }
 
-.hero { min-height: 936px; height: 936px; margin-inline: 24px; border-radius: 16px; padding: 32px 56px 0; }
+.hero { min-height: 936px; height: calc(444px + 67.8vw); margin-inline: 24px; border-radius: 16px; padding: 32px 56px 0; }
 .hero__content { width: 652px; max-width: calc(100% - 32px); margin-inline: auto; }
 .hero h1 { font-size: 64px; line-height: 72px; letter-spacing: -1px; }
 .hero__content > p { max-width: 652px; font-size: 20px; line-height: 28px; }
 .hero__actions { justify-content: center; }
 .hero__actions > span { width: 250px; text-align: left; }
-.hero__mockup { top: 520px; left: 32px; width: calc(100% - 64px); height: 865px; border-radius: 16px; box-shadow: var(--shadow-s4); }
-.hero__mockup img { width: 124.35%; height: 184.04%; max-width: none; object-fit: cover; transform: translate(-12.17%, -43.67%); }
-.hero__mockup--perspective { transform: perspective(1400px) rotateX(var(--hero-tilt, 3deg)); }
+.hero__mockup { top: 520px; left: 32px; width: calc(100% - 64px); height: auto; aspect-ratio: 1825 / 1237; border-radius: 16px; box-shadow: var(--shadow-s4); }
+.hero__mockup img { width: 100%; height: 100%; max-width: none; object-fit: cover; transform: none; }
+.hero__mockup--perspective { transform: perspective(1400px) translateY(var(--hero-lift, 0px)) rotateX(var(--hero-tilt, 11deg)) scale(var(--hero-scale, 0.96)); }
 
 .section--contact { padding-block: 128px; }
 .contact { grid-template-columns: repeat(2, minmax(0, 628px)); gap: 24px; }
@@ -1458,22 +1458,22 @@ input {
 .reveal.is-visible { opacity: 1; transform: none; }
 
 @media (max-width: 860px) {
-  .hero { height: 820px; min-height: 820px; margin-inline: 12px; padding-inline: 24px; }
+  .hero { height: calc(497px + 67.8vw); min-height: 930px; margin-inline: 12px; padding-inline: 24px; }
   .hero h1 { font-size: clamp(40px, 10vw, 56px); line-height: 1.08; }
   .hero__content > p { font-size: 18px; line-height: 26px; }
-  .hero__mockup { top: 540px; left: 20px; width: calc(100% - 40px); height: 520px; }
+  .hero__mockup { top: 540px; left: 20px; width: calc(100% - 40px); height: auto; }
   .contact { grid-template-columns: 1fr; }
   .contact__card, .contact__visual { height: auto; min-height: 520px; }
 }
 
 @media (max-width: 640px) {
-  .hero { height: 760px; min-height: 760px; padding: 24px 16px 0; }
+  .hero { height: calc(507px + 67.8vw); min-height: 880px; padding: 24px 16px 0; }
   .hero__content { max-width: 100%; }
   .hero h1 { font-size: 40px; line-height: 44px; }
   .hero__content > p { font-size: 16px; line-height: 24px; }
   .hero__actions { align-items: stretch; }
   .hero__actions > span { width: auto; text-align: center; }
-  .hero__mockup { top: 550px; height: 420px; }
+  .hero__mockup { top: 550px; height: auto; }
   .contact__card { padding: 28px; }
   .contact__card h2 { font-size: 36px; line-height: 42px; }
 }
@@ -1501,93 +1501,134 @@ input {
   background: var(--neutral-0);
   border-color: var(--brand-200);
 }
-.hero__mockup--perspective { transform: none; }
+
 
 /* Contact form layout from the approved reference */
-.contact--with-form {
+.contact--demo {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0;
-  overflow: hidden;
-  min-height: 648px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: var(--card);
-  box-shadow: var(--shadow-card);
+  overflow: visible;
 }
-.contact--with-form .contact__card,
-.contact--with-form .contact__visual {
-  height: 648px;
-  min-height: 648px;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
+
+.contact--demo .contact__card,
+.contact--demo .contact__visual {
+  height: 566px;
+  min-height: 566px;
 }
-.contact--with-form .contact__card {
-  justify-content: flex-start;
-  gap: 30px;
-  padding: 48px;
+
+.contact--demo .contact__card {
+  justify-content: center;
+  gap: 42px;
+  padding: clamp(32px, 4vw, 48px);
 }
-.contact--with-form .contact__card h2 {
+
+.contact--demo .contact__card h2 {
   font-size: 32px;
-  line-height: 40px;
-  letter-spacing: -0.6px;
+  line-height: 1.16;
+  letter-spacing: -1px;
 }
-.contact--with-form .contact__form-header {
-  margin: 0;
-}
-.contact--with-form .contact__form-header p {
-  margin-top: 14px;
-  max-width: 500px;
-  color: var(--muted-foreground);
-  font-size: 15px;
+
+.contact--demo .contact__card p {
+  max-width: 520px;
+  font-size: 16px;
   line-height: 24px;
 }
-.contact--with-form .demo-form {
-  display: grid;
-  gap: 16px;
+
+.contact--demo .contact__action {
+  align-items: flex-start;
+  gap: 28px;
 }
-.contact--with-form .form-field {
-  display: grid;
-  gap: 8px;
-  padding: 0;
-  color: var(--foreground);
+
+.contact--demo .event-benefit {
+  align-items: flex-start;
   font-size: 13px;
-  font-weight: 500;
+  line-height: 18px;
 }
-.contact--with-form .form-field > span {
-  position: static;
-  color: inherit;
-  transform: none;
+
+.contact--demo .event-benefit > svg {
+  flex: 0 0 24px;
+  color: var(--primary);
 }
-.contact--with-form .form-field input {
-  height: 42px;
-  padding: 0 14px;
-  border-radius: 10px;
-  background: var(--neutral-50);
-  font-size: 15px;
+
+.contact--demo .contact__visual {
+  overflow: visible;
+  isolation: isolate;
 }
-.contact--with-form .form-field input::placeholder {
-  color: #9299a8;
-  opacity: 1;
+
+.contact--demo .contact__visual::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border: 1px solid var(--primary);
+  border-radius: inherit;
+  background: var(--primary);
+  content: '';
 }
-.contact--with-form .demo-form__submit {
-  min-width: 197px;
-  height: 44px;
-  margin-top: 4px;
+
+.contact--demo .contact__grid {
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.contact--demo .contact__doctor {
+  z-index: 2;
+  left: -13%;
+  bottom: 0;
+  width: 126%;
+  height: calc(100% + 112px);
+  max-width: none;
+  object-fit: contain;
+  object-position: bottom center;
+  background: transparent;
+}
+
+.contact--demo .contact-icon {
+  z-index: 3;
 }
 
 @media (max-width: 860px) {
-  .contact--with-form { grid-template-columns: 1fr; }
-  .contact--with-form .contact__card,
-  .contact--with-form .contact__visual { height: auto; min-height: 600px; }
-  .contact--with-form .contact__card { padding: 36px; }
+  .contact--demo {
+    grid-template-columns: 1fr;
+  }
+
+  .contact--demo .contact__card {
+    height: auto;
+    min-height: 520px;
+  }
+
+  .contact--demo .contact__visual {
+    height: 420px;
+    min-height: 420px;
+    margin-top: 28px;
+  }
 }
 
 @media (max-width: 640px) {
-  .contact--with-form .contact__card { padding: 28px 22px; }
-  .contact--with-form .contact__card h2 { font-size: 28px; line-height: 36px; }
-}
+  .contact--demo .contact__card {
+    min-height: 520px;
+    padding: 30px 24px;
+  }
 
+  .contact--demo .contact__card h2 {
+    font-size: 34px;
+    line-height: 40px;
+  }
+
+  .contact--demo .contact__action {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact--demo .contact__visual {
+    height: 328px;
+    min-height: 328px;
+  }
+
+  .contact--demo .contact__doctor {
+    left: -4%;
+    width: 108%;
+    height: calc(100% + 28px);
+  }
+}
 /* Keep the fixed-width desktop hero on the same centered axis as the header. */
 .hero { margin-inline: auto; }
 
@@ -1597,21 +1638,31 @@ input {
 .benefit:focus-within {
   background-image: none;
 }
+.integration-path--draw {
+  display: none;
+}
 .integration-path--flow {
-  stroke: #7f9ff5;
-  stroke-width: 5;
-  stroke-dasharray: 64 1006;
-  filter: drop-shadow(0 0 3px rgb(151 173 229 / 75%));
+  stroke: var(--primary);
+  stroke-width: 10;
+  stroke-dasharray: 0.12 0.88;
+  stroke-dashoffset: 0;
+  filter: none;
 }
 .reveal.has-entered .integration-path--flow {
   opacity: 1;
-  animation: integration-flow 3s linear infinite;
+  animation: integration-flow 3.2s linear infinite;
+  animation-delay: calc(-1.2s + var(--flow-delay));
 }
 
 /* Bidirectional section reveals and row-by-row benefit sequencing */
 .benefit { transition-delay: 0ms; }
 .reveal.is-visible .benefit {
-  transition-delay: calc(var(--card-row) * 420ms + var(--card-column) * 100ms);
+  transition-delay:
+    calc(var(--card-row) * 420ms + var(--card-column) * 100ms),
+    calc(var(--card-row) * 420ms + var(--card-column) * 100ms),
+    0ms,
+    0ms,
+    0ms;
 }
 
 /* The blue hero follows the viewport width with the Figma 24px gutters. */

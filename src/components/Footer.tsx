@@ -1,4 +1,4 @@
-﻿import { Brand } from './Brand'
+import { Brand } from './Brand'
 
 export function Footer() {
   return (
@@ -18,10 +18,7 @@ export function Footer() {
       </div>
       <div className="container footer__bottom">
         <span>2026 © FyS TechGroup | Todos los derechos reservados</span>
-        <nav aria-label="Enlaces legales">
-          <a href="#terminos">Términos y condiciones</a>
-          <a href="#privacidad">Política de privacidad</a>
-        </nav>
+
       </div>
     </footer>
   )

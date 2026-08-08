@@ -1,4 +1,4 @@
-﻿import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, expect, it } from 'vitest'
 import App from './App'
 
@@ -22,16 +22,31 @@ it('preserves the exact Figma hero content and dashboard asset', () => {
   expect(screen.getByRole('img', { name: /panel de indicadores/i })).toBeInTheDocument()
 })
 
-it('keeps the integration diagram and renders the requested contact form', () => {
+it('keeps the integration diagram and renders the demo CTA with its doctor visual', () => {
   render(<App />)
   expect(screen.getByRole('img', { name: /flujo de integración/i })).toBeInTheDocument()
-  expect(screen.getByRole('form', { name: /solicitud de demo/i })).toBeInTheDocument()
-  expect(screen.getByLabelText(/nombre y apellido/i)).toBeRequired()
-  expect(screen.getByLabelText(/institución/i)).toBeRequired()
-  expect(screen.getByLabelText(/email/i)).toHaveAttribute('type', 'email')
-  expect(screen.getByLabelText(/teléfono/i)).toHaveAttribute('type', 'tel')
+  expect(screen.getByRole('heading', { level: 2, name: /coordinemos una demo/i })).toBeInTheDocument()
+  expect(screen.getAllByRole('link', { name: /agendá una demo/i }).some((link) => link.getAttribute('href') === '#agendar')).toBe(true)
+  expect(screen.getByText(/beneficio exclusivo durante el evento/i)).toBeInTheDocument()
+  expect(screen.getByRole('img', { name: /profesional médico/i })).toHaveClass('contact__doctor')
 })
 
+it('normalizes every animated integration pulse to its own path', () => {
+  render(<App />)
+  const pulses = document.querySelectorAll('.integration-path--flow')
+  expect(pulses).toHaveLength(6)
+  expect(document.querySelector('.integration-diagram__lines')).toHaveAttribute('preserveAspectRatio', 'none')
+  pulses.forEach((pulse) => expect(pulse).toHaveAttribute('pathLength', '1'))
+})
+it('initializes the dashboard as a lowered perspective surface', () => {
+  render(<App />)
+  const mockup = document.querySelector<HTMLElement>('[data-scroll-perspective]')
+  expect(mockup).not.toBeNull()
+  expect(mockup?.closest('.hero')).toHaveAttribute('data-full-dashboard', 'true')
+  expect(mockup?.style.getPropertyValue('--hero-tilt')).toBe('11deg')
+  expect(mockup?.style.getPropertyValue('--hero-lift')).toBe('44px')
+  expect(mockup?.style.getPropertyValue('--hero-scale')).toBe('0.96')
+})
 it('uses the shared vector brand in the footer', () => {
   render(<App />)
   expect(screen.getByRole('contentinfo').querySelector('.brand__logo')).toBeInTheDocument()

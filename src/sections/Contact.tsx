@@ -1,4 +1,6 @@
-﻿const icons = {
+﻿import { BadgePercent } from 'lucide-react'
+
+const icons = {
   users: 'https://www.figma.com/api/mcp/asset/e5d29c3e-f500-455d-a98e-0c9f3e24a831.svg',
   chart: 'https://www.figma.com/api/mcp/asset/14b51960-c448-4e88-ad86-2db267716dc7.svg',
   calendar: 'https://www.figma.com/api/mcp/asset/7195c01e-b7dc-4976-94ca-d5d253f5af58.svg',
@@ -8,41 +10,33 @@
 export function Contact() {
   return (
     <section className="section section--contact" id="contacto">
-      <div className="container contact contact--with-form">
-        <div className="contact__card">
-          <header className="contact__form-header">
+      <div className="container contact contact--demo">
+        <div className="contact__card" id="agendar">
+          <div>
             <h2>Coordinemos una demo</h2>
             <p>
-              Contanos cómo funciona hoy tu centro de salud y te mostramos, con
-              tus propios indicadores, dónde están las oportunidades de mejora.
+              Conocé cómo Healthics puede optimizar la gestión de tu centro de
+              salud. Reservá una reunión en el horario que te resulte más
+              conveniente y recibí una demostración personalizada de la
+              plataforma.
             </p>
-          </header>
+          </div>
 
-          <form
-            className="demo-form"
-            aria-label="Solicitud de demo"
-            onSubmit={(event) => event.preventDefault()}
-          >
-            <label className="form-field">
-              <span>Nombre y apellido</span>
-              <input name="name" type="text" placeholder="Ingresá tu nombre completo" autoComplete="name" required />
-            </label>
-            <label className="form-field">
-              <span>Institución</span>
-              <input name="organization" type="text" placeholder="Nombre de la institución o centro" autoComplete="organization" required />
-            </label>
-            <label className="form-field">
-              <span>Email</span>
-              <input name="email" type="email" placeholder="nombre@institucion.com" autoComplete="email" required />
-            </label>
-            <label className="form-field">
-              <span>Teléfono</span>
-              <input name="phone" type="tel" placeholder="+54 11 0000 0000" autoComplete="tel" required />
-            </label>
-            <button className="button button--primary demo-form__submit" type="submit">
-              Solicitar una demo <span aria-hidden="true">→</span>
-            </button>
-          </form>
+          <div className="contact__action">
+            <a className="button button--primary" href="#agendar">
+              Agendá una demo
+            </a>
+            <div className="event-benefit">
+              <BadgePercent aria-hidden="true" size={24} />
+              <div>
+                <strong>¡Beneficio exclusivo durante el evento!</strong>
+                <span>
+                  Reservá tu reunión durante el evento y obtené un descuento
+                  exclusivo.
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="contact__visual">

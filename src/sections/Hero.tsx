@@ -1,4 +1,4 @@
-﻿import { type CSSProperties, useEffect, useRef } from 'react'
+import { type CSSProperties, useEffect, useRef } from 'react'
 import dashboardImage from '../assets/healthics-dashboard.png'
 
 const titleWords = ['Mejorá', 'la', 'rentabilidad', 'de', 'tu', 'centro', 'de', 'salud']
@@ -19,13 +19,19 @@ export function Hero() {
       if (!hero || !mockup || !grid) return
       if (reducedMotion) {
         mockup.style.setProperty('--hero-tilt', '0deg')
+        mockup.style.setProperty('--hero-lift', '0px')
+        mockup.style.setProperty('--hero-scale', '1')
+        mockup.style.setProperty('--hero-shine', '1')
         grid.style.setProperty('--grid-parallax', '0px')
         return
       }
       const rect = hero.getBoundingClientRect()
       const travel = Math.max(hero.offsetHeight * 0.72, 1)
       const progress = Math.min(Math.max(-rect.top / travel, 0), 1)
-      mockup.style.setProperty('--hero-tilt', `${3 * (1 - progress)}deg`)
+      mockup.style.setProperty('--hero-tilt', `${11 * (1 - progress)}deg`)
+      mockup.style.setProperty('--hero-lift', `${Math.round(44 * (1 - progress))}px`)
+      mockup.style.setProperty('--hero-scale', `${0.96 + progress * 0.04}`)
+      mockup.style.setProperty('--hero-shine', `${progress}`)
       grid.style.setProperty('--grid-parallax', `${Math.round(progress * 18)}px`)
     }
     const requestUpdate = () => { if (!frame) frame = requestAnimationFrame(updatePerspective) }
@@ -40,7 +46,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="hero reveal" id="inicio" ref={heroRef} data-reveal>
+    <section className="hero reveal" id="inicio" ref={heroRef} data-reveal data-full-dashboard="true">
       <div className="hero__grid" ref={gridRef} aria-hidden="true" />
       <div className="hero__glow" aria-hidden="true" />
       <div className="hero__content">
