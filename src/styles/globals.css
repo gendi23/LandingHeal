@@ -1427,6 +1427,15 @@ input {
   }
 }
 
+/* Review corrections: keep this pass limited to the annotated spacing and framing. */
+.header__cta .button__arrow { display: none; }
+.hero { padding-top: 48px; }
+.hero__mockup { overflow: hidden; box-shadow: none; }
+.hero__mockup img { transform: scale(1.11); }
+@media (max-width: 640px) {
+  .hero { padding-top: 36px; }
+}
+
 /* Figma geometry with Lovable-inspired motion polish */
 .header,
 .header--scrolled { height: 72px; min-height: 72px; }
@@ -1551,6 +1560,7 @@ input {
 
 .contact--demo .contact__visual {
   overflow: visible;
+  border: 0;
   isolation: isolate;
 }
 
@@ -1558,7 +1568,7 @@ input {
   position: absolute;
   z-index: -1;
   inset: 0;
-  border: 1px solid var(--primary);
+  border: 0;
   border-radius: inherit;
   background: var(--primary);
   content: '';
@@ -1571,14 +1581,16 @@ input {
 
 .contact--demo .contact__doctor {
   z-index: 2;
-  left: -13%;
+  left: 0;
   bottom: 0;
-  width: 126%;
+  width: 100%;
   height: calc(100% + 112px);
   max-width: none;
-  object-fit: contain;
+  object-fit: cover;
   object-position: bottom center;
   background: transparent;
+  clip-path: inset(0 0 84px);
+  transform: translateY(84px);
 }
 
 .contact--demo .contact-icon {
@@ -1627,6 +1639,9 @@ input {
     left: -4%;
     width: 108%;
     height: calc(100% + 28px);
+    object-fit: contain;
+    clip-path: none;
+    transform: none;
   }
 }
 /* Keep the fixed-width desktop hero on the same centered axis as the header. */
@@ -1748,4 +1763,19 @@ input {
   .integration-path.is-active {
     stroke-width: 9;
   }
+}
+
+/* Ensure the annotated corrections win over the historical compatibility overrides above. */
+.hero { padding-top: 48px; }
+.hero__mockup { overflow: hidden; box-shadow: none; }
+.hero__mockup img { transform: scale(1.075); }
+.section--contact { padding-bottom: 128px; }
+.footer address {
+  align-self: flex-start;
+  margin-top: 40px;
+}
+@media (max-width: 640px) {
+  .hero { padding-top: 36px; }
+  .section--contact { padding-bottom: 112px; }
+  .footer address { margin-top: 12px; }
 }
