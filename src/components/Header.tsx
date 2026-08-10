@@ -11,12 +11,29 @@ const navItems = [
 export function Header() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const [activeId, setActiveId] = useState('inicio')
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const firstLinkRef = useRef<HTMLAnchorElement>(null)
+  const lastScrollYRef = useRef(0)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => {
+      const nextScrollY = window.scrollY
+      const delta = nextScrollY - lastScrollYRef.current
+
+      setScrolled(nextScrollY > 24)
+      if (nextScrollY <= 24) {
+        setHidden(false)
+        lastScrollYRef.current = nextScrollY
+        return
+      }
+      if (Math.abs(delta) < 6) return
+
+      setHidden(delta > 0)
+      lastScrollYRef.current = nextScrollY
+    }
+
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -53,7 +70,13 @@ export function Header() {
   }, [open])
 
   return (
-    <header className={'header' + (scrolled ? ' header--scrolled' : '')}>
+    <header
+      className={
+        'header' +
+        (scrolled ? ' header--scrolled' : '') +
+        (hidden && !open ? ' header--hidden' : '')
+      }
+    >
       <div className="container header__inner">
         <Brand />
         <button

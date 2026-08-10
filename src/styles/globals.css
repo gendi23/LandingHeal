@@ -1963,3 +1963,65 @@ input {
     width: 156px;
   }
 }
+/* Final interaction and framing corrections. */
+.header {
+  transform: translateY(0);
+  transition:
+    transform var(--dur-base) var(--ease-out-expo),
+    height var(--dur-base) var(--ease-out-expo),
+    background-color var(--dur-base) var(--ease-out-expo),
+    border-color var(--dur-base) var(--ease-out-expo),
+    box-shadow var(--dur-base) var(--ease-out-expo);
+  will-change: transform;
+}
+
+.header--hidden {
+  transform: translateY(-100%);
+}
+
+.hero__actions {
+  flex-direction: row;
+  justify-content: center;
+  gap: 18px;
+}
+
+.hero__mockup {
+  left: 6%;
+  width: 88%;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.hero__mockup--perspective::after {
+  display: none;
+}
+
+.hero__mockup img {
+  transform: none;
+}
+
+.contact--demo .contact__doctor {
+  border-radius: 16px;
+}
+
+@media (max-width: 640px) {
+  .hero__actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero__mockup {
+    left: 24px;
+    width: calc(100% - 48px);
+  }
+}
+/* Keep the doctor overflow above the panel while clipping its bottom corners. */
+.contact--demo .contact__visual {
+  clip-path: inset(-120px 0 0 0 round 0 0 16px 16px);
+}
+
+.contact--demo .contact__doctor,
+.contact--demo .contact__grid {
+  border-radius: 0 0 16px 16px;
+}
