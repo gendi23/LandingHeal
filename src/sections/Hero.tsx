@@ -28,9 +28,9 @@ export function Hero() {
       const rect = hero.getBoundingClientRect()
       const travel = Math.max(hero.offsetHeight * 0.72, 1)
       const progress = Math.min(Math.max(-rect.top / travel, 0), 1)
-      mockup.style.setProperty('--hero-tilt', `${11 * (1 - progress)}deg`)
-      mockup.style.setProperty('--hero-lift', `${Math.round(44 * (1 - progress))}px`)
-      mockup.style.setProperty('--hero-scale', `${0.96 + progress * 0.04}`)
+      mockup.style.setProperty('--hero-tilt', `${16 * (1 - progress)}deg`)
+      mockup.style.setProperty('--hero-lift', `${Math.round(72 * (1 - progress))}px`)
+      mockup.style.setProperty('--hero-scale', `${0.9 + progress * 0.1}`)
       mockup.style.setProperty('--hero-shine', `${progress}`)
       grid.style.setProperty('--grid-parallax', `${Math.round(progress * 18)}px`)
     }

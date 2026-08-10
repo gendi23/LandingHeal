@@ -1,5 +1,6 @@
 import { type CSSProperties, useState } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
+import healthicsIsologo from '../assets/healthics-isologo.svg'
 
 const paths = [
   'M 206 76 H 326 C 400 76 440 220 580 270',
@@ -98,11 +99,13 @@ export function Integration() {
               <i />
             </div>
             <div className="integration-diagram__hub" aria-hidden="true">
-              <span className="brand__mark">
-                <i />
-                <i />
-                <i />
-              </span>
+              <img
+                className="brand__isologo"
+                src={healthicsIsologo}
+                alt=""
+                width="164"
+                height="164"
+              />
             </div>
 
             <div className="integration-diagram__outputs">

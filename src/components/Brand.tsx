@@ -1,33 +1,25 @@
-﻿type BrandProps = { inverse?: boolean; linked?: boolean }
+import healthicsLogo from '../assets/healthics-logo.svg'
+
+type BrandProps = { inverse?: boolean; linked?: boolean }
 
 export function BrandLogo() {
   return (
-    <svg
+    <img
       className="brand__logo"
-      viewBox="0 0 32 32"
-      role="img"
-      aria-label="Healthics"
-    >
-      <rect width="32" height="32" rx="3" fill="currentColor" />
-      <path
-        d="M8 7v18M16 12v8M24 7v18"
-        stroke="var(--brand-logo-bars)"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-    </svg>
+      src={healthicsLogo}
+      alt="Healthics"
+      width="700"
+      height="164"
+    />
   )
 }
 
 export function Brand({ inverse = false, linked = true }: BrandProps) {
-  const content = (
-    <>
-      <BrandLogo />
-      <strong>Healthics</strong>
-    </>
-  )
   const className = 'brand' + (inverse ? ' brand--inverse' : '')
+  const content = <BrandLogo />
+
   if (!linked) return <span className={className}>{content}</span>
+
   return (
     <a className={className} href="#inicio" aria-label="Healthics - inicio">
       {content}

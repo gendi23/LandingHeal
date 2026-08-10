@@ -1,10 +1,18 @@
-import { Brand } from './Brand'
+import fysLogo from '../assets/fys-logo.svg'
 
 export function Footer() {
   return (
     <footer className="footer">
       <div className="container footer__top">
-        <Brand inverse linked={false} />
+        <img
+          className="footer__company-logo"
+          src={fysLogo}
+          alt="FyS TechGroup"
+          width="149"
+          height="67"
+          loading="lazy"
+          decoding="async"
+        />
         <address>
           <b>Contacto</b>
           <a href="https://maps.google.com/?q=Lavalle+579+CABA">
@@ -18,7 +26,6 @@ export function Footer() {
       </div>
       <div className="container footer__bottom">
         <span>2026 © FyS TechGroup | Todos los derechos reservados</span>
-
       </div>
     </footer>
   )

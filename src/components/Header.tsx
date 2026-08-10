@@ -1,4 +1,4 @@
-﻿import { Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Brand } from './Brand'
 
@@ -88,10 +88,7 @@ export function Header() {
           ))}
         </nav>
         <a className="button button--primary header__cta" href="#contacto">
-          Agendá una demo{' '}
-          <span className="button__arrow" aria-hidden="true">
-            →
-          </span>
+          Agendá una demo
         </a>
       </div>
     </header>
