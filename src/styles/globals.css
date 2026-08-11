@@ -2181,3 +2181,68 @@ input {
     width: calc(100% - 16px);
   }
 }
+
+/* Final narrow-screen safeguards for legacy iPhone viewports. */
+@media (max-width: 640px) {
+  html,
+  body,
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    box-sizing: border-box;
+    padding-inline: 16px;
+    overflow: hidden;
+  }
+
+  .hero__content,
+  .hero h1 {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 9.5vw, 40px);
+    line-height: 1.08;
+  }
+
+  .hero__words {
+    display: block;
+  }
+
+  .hero__word {
+    display: inline-block;
+    margin-right: 0.22em;
+  }
+
+  .hero__word:last-child {
+    margin-right: 0;
+  }
+
+  .hero__mockup {
+    right: auto;
+    max-width: calc(100% - 16px);
+  }
+
+  .benefits {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .benefit {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact.contact--demo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact--demo .contact__card,
+  .contact--demo .contact__visual {
+    width: 100%;
+    min-width: 0;
+  }
+}

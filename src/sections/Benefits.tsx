@@ -1,4 +1,3 @@
-﻿import { ArrowUpRight } from 'lucide-react'
 import { type CSSProperties } from 'react'
 import { SectionHeading } from '../components/SectionHeading'
 
@@ -66,11 +65,6 @@ export function Benefits() {
                 height="64"
                 loading="lazy"
                 decoding="async"
-              />
-              <ArrowUpRight
-                className="benefit__arrow"
-                aria-hidden="true"
-                size={22}
               />
               <div>
                 <h3>{title}</h3>

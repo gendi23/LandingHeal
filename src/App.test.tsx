@@ -6,7 +6,7 @@ afterEach(cleanup)
 
 it('keeps the Figma navigation labels and responsive menu behavior', () => {
   render(<App />)
-  expect(screen.getByRole('link', { name: 'Indicadores' })).toHaveAttribute('href', '#integraciones')
+  expect(screen.getByRole('link', { name: 'Integraciones' })).toHaveAttribute('href', '#integraciones')
   const menu = screen.getByRole('button', { name: /abrir menú/i })
   fireEvent.click(menu)
   expect(menu).toHaveAttribute('aria-expanded', 'true')

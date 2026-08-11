@@ -4,7 +4,7 @@ import { Brand } from './Brand'
 
 const navItems = [
   { href: '#funcionalidades', label: 'Funcionalidades' },
-  { href: '#integraciones', label: 'Indicadores' },
+  { href: '#integraciones', label: 'Integraciones' },
   { href: '#contacto', label: 'Contacto' },
 ]
 
