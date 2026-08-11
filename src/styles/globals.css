@@ -2080,3 +2080,67 @@ input {
     transform-origin: center bottom;
   }
 }
+
+/* Match the reference dashboard width while keeping it centered. */
+.hero__mockup {
+  left: 0;
+  right: 0;
+  width: min(calc(100% - 64px), 840px);
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  .hero__mockup {
+    left: 20px;
+    right: auto;
+    width: calc(100% - 40px);
+    margin-inline: 0;
+  }
+}
+
+/* Main hero proportions and layout matched to the supplied reference. */
+@media (min-width: 641px) {
+  .hero__mockup {
+    width: min(calc(100% - 64px), 1040px);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero__actions > span {
+    width: auto;
+    text-align: center;
+  }
+}
+
+.hero__words {
+  column-gap: 0.3em;
+}
+
+/* Desktop hero: 64px outer spacing and no excess blue after the dashboard. */
+@media (min-width: 1101px) {
+  .hero {
+    height: 1268px;
+    min-height: 1268px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .hero__mockup {
+    top: 440px;
+  }
+}
+
+/* Keep the supporting copy clear of the dashboard while preserving 64px below it. */
+@media (min-width: 1101px) {
+  .hero {
+    height: 1348px;
+    min-height: 1348px;
+  }
+
+  .hero__mockup {
+    top: 520px;
+  }
+}

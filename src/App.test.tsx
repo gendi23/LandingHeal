@@ -51,9 +51,9 @@ it('initializes the dashboard as a lowered perspective surface', () => {
   const mockup = document.querySelector<HTMLElement>('[data-scroll-perspective]')
   expect(mockup).not.toBeNull()
   expect(mockup?.closest('.hero')).toHaveAttribute('data-full-dashboard', 'true')
-  expect(mockup?.style.getPropertyValue('--hero-tilt')).toBe('6deg')
-  expect(mockup?.style.getPropertyValue('--hero-lift')).toBe('24px')
-  expect(mockup?.style.getPropertyValue('--hero-scale')).toBe('0.97')
+  expect(mockup?.style.getPropertyValue('--hero-tilt')).toBe('4deg')
+  expect(mockup?.style.getPropertyValue('--hero-lift')).toBe('28px')
+  expect(mockup?.style.getPropertyValue('--hero-scale')).toBe('0.94')
 })
 it('uses the FyS TechGroup brand in the footer', () => {
   render(<App />)
