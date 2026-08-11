@@ -2167,3 +2167,17 @@ input {
     top: 560px;
   }
 }
+
+/* The mobile navigation CTA is a button, so it must not inherit the link underline. */
+.header__nav .header__mobile-cta::after {
+  content: none;
+  display: none;
+}
+
+/* Mobile dashboard aligns visually with the primary hero CTA. */
+@media (max-width: 640px) {
+  .hero__mockup {
+    left: 8px;
+    width: calc(100% - 16px);
+  }
+}
