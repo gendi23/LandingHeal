@@ -2144,3 +2144,26 @@ input {
     top: 520px;
   }
 }
+
+/* Desktop CTA stays horizontal and clear of the dashboard through the full scroll motion. */
+@media (min-width: 1101px) {
+  .hero {
+    height: 1388px;
+    min-height: 1388px;
+  }
+
+  .hero__actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .hero__actions > span {
+    width: 250px;
+    text-align: left;
+  }
+
+  .hero__mockup {
+    top: 560px;
+  }
+}
