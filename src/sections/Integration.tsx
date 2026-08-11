@@ -82,8 +82,6 @@ export function Integration() {
                   type="button"
                   key={item}
                   aria-controls={'integration-path-' + index}
-                  onMouseEnter={() => setActivePath(index)}
-                  onMouseLeave={() => setActivePath(null)}
                   onFocus={() => setActivePath(index)}
                   onBlur={() => setActivePath(null)}
                 >
@@ -116,8 +114,6 @@ export function Integration() {
                     type="button"
                     key={item}
                     aria-controls={'integration-path-' + index}
-                    onMouseEnter={() => setActivePath(index)}
-                    onMouseLeave={() => setActivePath(null)}
                     onFocus={() => setActivePath(index)}
                     onBlur={() => setActivePath(null)}
                   >

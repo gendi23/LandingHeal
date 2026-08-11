@@ -10,6 +10,8 @@ it('keeps the Figma navigation labels and responsive menu behavior', () => {
   const menu = screen.getByRole('button', { name: /abrir menú/i })
   fireEvent.click(menu)
   expect(menu).toHaveAttribute('aria-expanded', 'true')
+  const navigation = screen.getByRole('navigation', { name: /navegaci/i })
+  expect(navigation).toHaveTextContent(/agend.* una demo/i)
   fireEvent.keyDown(document, { key: 'Escape' })
   expect(menu).toHaveAttribute('aria-expanded', 'false')
 })
@@ -38,14 +40,20 @@ it('normalizes every animated integration pulse to its own path', () => {
   expect(document.querySelector('.integration-diagram__lines')).toHaveAttribute('preserveAspectRatio', 'none')
   pulses.forEach((pulse) => expect(pulse).toHaveAttribute('pathLength', '1'))
 })
+
+it('does not dim integration paths when a diagram item is hovered', () => {
+  render(<App />)
+  fireEvent.mouseEnter(screen.getByRole('button', { name: 'HIS' }))
+  expect(document.querySelector('.integration-path.is-dimmed')).toBeNull()
+})
 it('initializes the dashboard as a lowered perspective surface', () => {
   render(<App />)
   const mockup = document.querySelector<HTMLElement>('[data-scroll-perspective]')
   expect(mockup).not.toBeNull()
   expect(mockup?.closest('.hero')).toHaveAttribute('data-full-dashboard', 'true')
-  expect(mockup?.style.getPropertyValue('--hero-tilt')).toBe('16deg')
-  expect(mockup?.style.getPropertyValue('--hero-lift')).toBe('72px')
-  expect(mockup?.style.getPropertyValue('--hero-scale')).toBe('0.9')
+  expect(mockup?.style.getPropertyValue('--hero-tilt')).toBe('6deg')
+  expect(mockup?.style.getPropertyValue('--hero-lift')).toBe('24px')
+  expect(mockup?.style.getPropertyValue('--hero-scale')).toBe('0.97')
 })
 it('uses the FyS TechGroup brand in the footer', () => {
   render(<App />)

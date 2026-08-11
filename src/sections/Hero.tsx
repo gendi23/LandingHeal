@@ -1,5 +1,5 @@
 import { type CSSProperties, useEffect, useRef } from 'react'
-import dashboardImage from '../assets/healthics-dashboard.png'
+import dashboardImage from '../assets/hero-image.svg'
 
 const titleWords = ['Mejorá', 'la', 'rentabilidad', 'de', 'tu', 'centro', 'de', 'salud']
 
@@ -28,9 +28,9 @@ export function Hero() {
       const rect = hero.getBoundingClientRect()
       const travel = Math.max(hero.offsetHeight * 0.72, 1)
       const progress = Math.min(Math.max(-rect.top / travel, 0), 1)
-      mockup.style.setProperty('--hero-tilt', `${16 * (1 - progress)}deg`)
-      mockup.style.setProperty('--hero-lift', `${Math.round(72 * (1 - progress))}px`)
-      mockup.style.setProperty('--hero-scale', `${0.9 + progress * 0.1}`)
+      mockup.style.setProperty('--hero-tilt', `${6 * (1 - progress)}deg`)
+      mockup.style.setProperty('--hero-lift', `${Math.round(24 * (1 - progress))}px`)
+      mockup.style.setProperty('--hero-scale', `${0.97 + progress * 0.03}`)
       mockup.style.setProperty('--hero-shine', `${progress}`)
       grid.style.setProperty('--grid-parallax', `${Math.round(progress * 18)}px`)
     }
@@ -69,7 +69,7 @@ export function Hero() {
         </div>
       </div>
       <div className="hero__mockup hero__mockup--perspective" ref={mockupRef} data-scroll-perspective>
-        <img src={dashboardImage} alt="Panel de indicadores de Healthics" width="1825" height="1237" decoding="async" fetchPriority="high" />
+        <img src={dashboardImage} alt="Panel de indicadores de Healthics" width="1292" height="949" decoding="async" fetchPriority="high" />
       </div>
     </section>
   )

@@ -109,6 +109,13 @@ export function Header() {
               {item.label}
             </a>
           ))}
+          <a
+            className="button button--primary header__mobile-cta"
+            href="#contacto"
+            onClick={() => setOpen(false)}
+          >
+            Agendá una demo
+          </a>
         </nav>
         <a className="button button--primary header__cta" href="#contacto">
           Agendá una demo

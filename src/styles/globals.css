@@ -2025,3 +2025,58 @@ input {
 .contact--demo .contact__grid {
   border-radius: 0 0 16px 16px;
 }
+
+/* Keep the product visible near the hero copy with a subtle initial perspective. */
+.hero__mockup {
+  top: 310px;
+  aspect-ratio: 1292 / 949;
+}
+
+.hero__mockup--perspective {
+  transform: perspective(1400px) translateY(var(--hero-lift, 0px))
+    rotateX(var(--hero-tilt, 6deg)) scale(var(--hero-scale, 0.97));
+}
+
+@media (max-width: 640px) {
+  .hero__mockup {
+    top: 540px;
+  }
+}
+
+/* Hover stays visually neutral; keyboard focus still identifies connections. */
+.integration-diagram button:hover {
+  background: var(--secondary);
+  box-shadow: none;
+  transform: none;
+}
+
+/* The primary action lives inside the collapsed mobile navigation only. */
+.header__mobile-cta {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .header__nav .header__mobile-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+    color: white;
+  }
+}
+
+/* Mobile: compensate for the transparent side padding in the doctor artwork. */
+@media (max-width: 640px) {
+  .contact--demo .contact__doctor {
+    left: -14%;
+    width: 128%;
+    max-width: none;
+  }
+}
+
+/* Mobile: make the visible photo-not only its transparent canvas-span the blue panel. */
+@media (max-width: 640px) {
+  .contact--demo .contact__doctor {
+    transform: scale(1.3);
+    transform-origin: center bottom;
+  }
+}
