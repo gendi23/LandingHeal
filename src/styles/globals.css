@@ -2180,6 +2180,10 @@ input {
     left: 8px;
     width: calc(100% - 16px);
   }
+
+  .hero {
+    min-height: 0;
+  }
 }
 
 /* Final narrow-screen safeguards for legacy iPhone viewports. */
@@ -2244,5 +2248,16 @@ input {
   .contact--demo .contact__visual {
     width: 100%;
     min-width: 0;
+  }
+}
+/* Tablet: keep the dashboard below the complete hero copy and CTA. */
+@media (min-width: 641px) and (max-width: 1100px) {
+  .hero {
+    height: calc(712px + 67.8vw);
+    min-height: 1228px;
+  }
+
+  .hero__mockup {
+    top: 640px;
   }
 }
