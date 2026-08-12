@@ -1,4 +1,7 @@
-﻿import { BadgePercent } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { BadgePercent, X } from 'lucide-react'
+
+const bookingUrl = 'https://calendar.app.google/odM9roFptFCzyrja7'
 
 const icons = {
   users: 'https://www.figma.com/api/mcp/asset/e5d29c3e-f500-455d-a98e-0c9f3e24a831.svg',
@@ -8,6 +11,25 @@ const icons = {
 }
 
 export function Contact() {
+  const [showBooking, setShowBooking] = useState(false)
+
+  useEffect(() => {
+    if (!showBooking) return
+
+    const previousOverflow = document.body.style.overflow
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setShowBooking(false)
+    }
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', closeOnEscape)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [showBooking])
+
   return (
     <section className="section section--contact" id="contacto">
       <div className="container contact contact--demo">
@@ -23,7 +45,14 @@ export function Contact() {
           </div>
 
           <div className="contact__action">
-            <a className="button button--primary" href="#agendar">
+            <a
+              className="button button--primary"
+              href="#agendar"
+              onClick={(event) => {
+                event.preventDefault()
+                setShowBooking(true)
+              }}
+            >
               Agendá una demo
             </a>
             <div className="event-benefit">
@@ -32,7 +61,7 @@ export function Contact() {
                 <strong>¡Beneficio exclusivo durante el evento!</strong>
                 <span>
                   Reservá tu reunión durante el evento y obtené un descuento
-                  exclusivo.
+                  exclusivo del 25%.
                 </span>
               </div>
             </div>
@@ -49,6 +78,75 @@ export function Contact() {
           ))}
         </div>
       </div>
+
+      {showBooking && (
+        <div
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setShowBooking(false)
+          }}
+          style={{
+            position: 'fixed',
+            zIndex: 1000,
+            inset: 0,
+            display: 'grid',
+            placeItems: 'center',
+            padding: '16px',
+            background: 'rgb(15 23 42 / 72%)',
+            backdropFilter: 'blur(6px)',
+          }}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Reservar una demostración de Healthics"
+            style={{
+              position: 'relative',
+              width: 'min(960px, 100%)',
+              height: 'min(760px, calc(100dvh - 32px))',
+              overflow: 'hidden',
+              borderRadius: '16px',
+              background: '#fff',
+              boxShadow: '0 24px 80px rgb(15 23 42 / 32%)',
+            }}
+          >
+            <button
+              type="button"
+              aria-label="Cerrar calendario"
+              autoFocus
+              onClick={() => setShowBooking(false)}
+              style={{
+                position: 'absolute',
+                zIndex: 1,
+                top: '12px',
+                right: '12px',
+                display: 'grid',
+                width: '40px',
+                height: '40px',
+                placeItems: 'center',
+                border: 0,
+                borderRadius: '999px',
+                color: '#fff',
+                background: '#0034c2',
+                cursor: 'pointer',
+              }}
+            >
+              <X aria-hidden="true" size={22} />
+            </button>
+            <iframe
+              src={bookingUrl}
+              title="Reservar una demostración de Healthics"
+              loading="lazy"
+              style={{
+                width: '100%',
+                height: '100%',
+                border: 0,
+                background: '#fff',
+              }}
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 }

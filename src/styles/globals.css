@@ -1817,6 +1817,11 @@ input {
     stroke-width: 7;
   }
 
+  .integration-path--base {
+    stroke: var(--primary);
+    opacity: 0.42;
+  }
+
   .integration-path.is-active {
     stroke-width: 9;
   }

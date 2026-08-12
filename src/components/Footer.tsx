@@ -18,9 +18,9 @@ export function Footer() {
           <a href="https://maps.google.com/?q=Lavalle+579+CABA">
             Lavalle 579 7° - CABA
           </a>
-          <a href="tel:+5491158081291">+54 9 11 5808-1291</a>
-          <a href="mailto:comercial@fystechgroup.com">
-            comercial@fystechgroup.com
+          <a href="tel:+5491150501292">+54 9 11 5050-1292</a>
+          <a href="mailto:ventas@fysgroup.com.ar">
+            ventas@fysgroup.com.ar
           </a>
         </address>
       </div>

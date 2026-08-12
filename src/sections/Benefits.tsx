@@ -40,7 +40,7 @@ export function Benefits() {
       <div className="container">
         <SectionHeading
           eyebrow="¿Qué podés lograr con Healthics?"
-          title="Detectá ineficiencias antes de que afecten tu rentabilidad"
+          title="Descubrí el potencial de tus datos"
         >
           Con información consolidada de toda tu operación, Healthics te ayuda a
           identificar oportunidades de mejora que permanecen ocultas entre
