@@ -38,9 +38,9 @@ export function Contact() {
             <h2>Coordinemos una demo</h2>
             <p>
               Conocé cómo Healthics puede optimizar la gestión de tu centro de
-              salud. Reservá una reunión en el horario que te resulte más
-              conveniente y recibí una demostración personalizada de la
-              plataforma.
+              salud. Reservá una reunión, recibí una demostración personalizada
+              de la plataforma y encontrá el plan de suscripción que mejor se
+              adapta a las necesidades y objetivos de tu organización.
             </p>
           </div>
 
